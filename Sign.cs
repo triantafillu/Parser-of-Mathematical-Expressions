@@ -1,0 +1,32 @@
+﻿namespace Parser_of_Mathematical_Expressions
+{
+    public enum Sign
+    {
+        EOF, 
+        Plus, 
+        Minus, 
+        Multiply, 
+        Divide, 
+        Open, 
+        Close, 
+        Number, 
+        Sin, 
+        Cos, 
+        Tg, 
+        Ctg,
+        Zero,
+        One,
+        Not,
+        Or,
+        And,
+        Space,
+        DotComa, 
+        MatrOpen, 
+        MatrClose,
+        Inv,
+        Var,
+        Pow,
+        X,
+        Pol
+    }
+}

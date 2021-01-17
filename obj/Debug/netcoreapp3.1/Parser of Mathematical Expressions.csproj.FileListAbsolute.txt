@@ -1,0 +1,11 @@
+C:\Users\Александра\Desktop\Uni\2к1с\ООКП\Console Calculator C#\Parser of Mathematical Expressions\Parser of Mathematical Expressions\bin\Debug\netcoreapp3.1\Parser of Mathematical Expressions.exe
+C:\Users\Александра\Desktop\Uni\2к1с\ООКП\Console Calculator C#\Parser of Mathematical Expressions\Parser of Mathematical Expressions\bin\Debug\netcoreapp3.1\Parser of Mathematical Expressions.deps.json
+C:\Users\Александра\Desktop\Uni\2к1с\ООКП\Console Calculator C#\Parser of Mathematical Expressions\Parser of Mathematical Expressions\bin\Debug\netcoreapp3.1\Parser of Mathematical Expressions.runtimeconfig.json
+C:\Users\Александра\Desktop\Uni\2к1с\ООКП\Console Calculator C#\Parser of Mathematical Expressions\Parser of Mathematical Expressions\bin\Debug\netcoreapp3.1\Parser of Mathematical Expressions.runtimeconfig.dev.json
+C:\Users\Александра\Desktop\Uni\2к1с\ООКП\Console Calculator C#\Parser of Mathematical Expressions\Parser of Mathematical Expressions\bin\Debug\netcoreapp3.1\Parser of Mathematical Expressions.dll
+C:\Users\Александра\Desktop\Uni\2к1с\ООКП\Console Calculator C#\Parser of Mathematical Expressions\Parser of Mathematical Expressions\bin\Debug\netcoreapp3.1\Parser of Mathematical Expressions.pdb
+C:\Users\Александра\Desktop\Uni\2к1с\ООКП\Console Calculator C#\Parser of Mathematical Expressions\Parser of Mathematical Expressions\obj\Debug\netcoreapp3.1\Parser of Mathematical Expressions.csprojAssemblyReference.cache
+C:\Users\Александра\Desktop\Uni\2к1с\ООКП\Console Calculator C#\Parser of Mathematical Expressions\Parser of Mathematical Expressions\obj\Debug\netcoreapp3.1\Parser of Mathematical Expressions.AssemblyInfoInputs.cache
+C:\Users\Александра\Desktop\Uni\2к1с\ООКП\Console Calculator C#\Parser of Mathematical Expressions\Parser of Mathematical Expressions\obj\Debug\netcoreapp3.1\Parser of Mathematical Expressions.AssemblyInfo.cs
+C:\Users\Александра\Desktop\Uni\2к1с\ООКП\Console Calculator C#\Parser of Mathematical Expressions\Parser of Mathematical Expressions\obj\Debug\netcoreapp3.1\Parser of Mathematical Expressions.dll
+C:\Users\Александра\Desktop\Uni\2к1с\ООКП\Console Calculator C#\Parser of Mathematical Expressions\Parser of Mathematical Expressions\obj\Debug\netcoreapp3.1\Parser of Mathematical Expressions.pdb
