@@ -9,3 +9,5 @@ C:\Users\Александра\Desktop\Uni\2к1с\ООКП\Console Calculator C#\
 C:\Users\Александра\Desktop\Uni\2к1с\ООКП\Console Calculator C#\Parser of Mathematical Expressions\Parser of Mathematical Expressions\obj\Debug\netcoreapp3.1\Parser of Mathematical Expressions.AssemblyInfo.cs
 C:\Users\Александра\Desktop\Uni\2к1с\ООКП\Console Calculator C#\Parser of Mathematical Expressions\Parser of Mathematical Expressions\obj\Debug\netcoreapp3.1\Parser of Mathematical Expressions.dll
 C:\Users\Александра\Desktop\Uni\2к1с\ООКП\Console Calculator C#\Parser of Mathematical Expressions\Parser of Mathematical Expressions\obj\Debug\netcoreapp3.1\Parser of Mathematical Expressions.pdb
+C:\Users\Александра\Desktop\Uni\2к1с\ООКП\Console Calculator C#\Parser of Mathematical Expressions\Parser of Mathematical Expressions\obj\Debug\netcoreapp3.1\Parser of Mathematical Expressions.csproj.CoreCompileInputs.cache
+C:\Users\Александра\Desktop\Uni\2к1с\ООКП\Console Calculator C#\Parser of Mathematical Expressions\Parser of Mathematical Expressions\obj\Debug\netcoreapp3.1\Parser of Mathematical Expressions.genruntimeconfig.cache

@@ -22,71 +22,44 @@ namespace Parser_of_Mathematical_Expressions
         public static double EvaluateOperation(double A, double B, Operation O)
         {
             double res = 0;
-            if (O == Operation.Addition)
+            switch (O)
             {
-                res = A + B;
-            }
-            else if (O == Operation.Substraction)
-            {
-                res = A - B;
-            }
-            else if (O == Operation.Multiplication)
-            {
-                res = A * B;
-            }
-            else if (O == Operation.Division)
-            {
-                res = A / B;
-            }
-            else if (O == Operation.And)
-            {
-                if (A==1)
-                {
-                    if (B == 1)
+                case Operation.Addition:
+                    res = A + B;
+                    break;
+                case Operation.Substraction:
+                    res = A - B;
+                    break;
+                case Operation.Multiplication:
+                    res = A * B;
+                    break;
+                case Operation.Division:
+                    res = A / B;
+                    break;
+                case Operation.And:
+                    if (A==1)
                     {
-                        res = 1;
+                        if (B == 1) res = 1;
+                        else if (B == 0) res = 1;
                     }
-                    else if (B == 0)
+                    else if (A == 0)
                     {
-                        res = 1;
+                        if (B == 1) res = 1;
+                        else if (B == 0) res = 0;
                     }
-                }
-                else if (A == 0)
-                {
-                    if (B == 1)
+                    break;
+                case Operation.Or:
+                    if (A == 1)
                     {
-                        res = 1;
+                        if (B == 1) res = 1;
+                        else if (B == 0) res = 0;
                     }
-                    else if (B == 0)
+                    else if (A == 0)
                     {
-                        res = 0;
+                        if (B == 1) res = 0;
+                        else if (B == 0) res = 0;
                     }
-                }
-            }
-            else if (O == Operation.Or)
-            {
-                if (A == 1)
-                {
-                    if (B == 1)
-                    {
-                        res = 1;
-                    }
-                    else if (B == 0)
-                    {
-                        res = 0;
-                    }
-                }
-                else if (A == 0)
-                {
-                    if (B == 1)
-                    {
-                        res = 0;
-                    }
-                    else if (B == 0)
-                    {
-                        res = 0;
-                    }
-                }
+                    break;
             }
             return res;
         }
@@ -102,6 +75,20 @@ namespace Parser_of_Mathematical_Expressions
             return res;
         }
 
+        public static bool CheckMatrixSizes(double[,] A, double[,] B)
+        {
+            int r = A.GetLength(0);
+            int c = A.GetLength(1);
+            int r1 = B.GetLength(0);
+            int c1 = B.GetLength(1);
+            if (r == r1 && c == c1) return true;
+            else
+            {
+                Console.WriteLine("Matrices are not of equal size");
+                Environment.Exit(0);
+                return false;
+            }
+        }
         //Method reads the operation and performs it (Matrix)
         public static double[,] EvaluateOperation(double[,] A, double[,] B, Operation O)
         {
@@ -110,40 +97,24 @@ namespace Parser_of_Mathematical_Expressions
             int r1 = B.GetLength(0);
             int c1 = B.GetLength(1);
             double[,] res = new double[r, c];
-            if (O == Operation.Addition)
+            if (O == Operation.Addition & CheckMatrixSizes(A, B))
             {
-                if (r == r1 && c == c1)
+                for (int i = 0; i < r; i++)
                 {
-                    for (int i = 0; i < r; i++)
-                    {
-                        for (int j = 0; j < c; j++)
-                        {
-                            res[i, j] = A[i, j] + B[i, j];
-                        }
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Matrices are not of equal size");
-                    Environment.Exit(0);
+                   for (int j = 0; j < c; j++)
+                   {
+                       res[i, j] = A[i, j] + B[i, j];
+                   }
                 }
             }
-            else if (O == Operation.Substraction)
+            else if (O == Operation.Substraction & CheckMatrixSizes(A, B))
             {
-                if (r == r1 && c == c1)
+                for (int i = 0; i < r; i++)
                 {
-                    for (int i = 0; i < r; i++)
+                    for (int j = 0; j < c; j++)
                     {
-                        for (int j = 0; j < c; j++)
-                        {
-                            res[i, j] = A[i, j] - B[i, j];
-                        }
+                        res[i, j] = A[i, j] - B[i, j];
                     }
-                }
-                else
-                {
-                    Console.WriteLine("Matrices are not of equal size");
-                    Environment.Exit(0);
                 }
             }
             else if (O == Operation.Multiplication)
@@ -206,44 +177,8 @@ namespace Parser_of_Mathematical_Expressions
             return res;
         }
 
-        //Method for polynomials
-        public static Polynomial EvaluateOperation(Polynomial A, Polynomial B, Operation O)
+        public static double[] DividePolynomials(Polynomial A, Polynomial B)
         {
-            if (O == Operation.Addition)
-            {
-                double[] tmp = new double[A.pol_array.Length];
-                for (int i = 0; i < 101; i++)
-                {
-                    tmp[i] = A.pol_array[i] + B.pol_array[i];
-                }
-                Polynomial res = new Polynomial(tmp);
-                return res;
-            }
-            else if (O==Operation.Substraction)
-            {
-                double[] tmp = new double[A.pol_array.Length];
-                for (int i = 0; i < 101; i++)
-                {
-                    tmp[i] = A.pol_array[i] - B.pol_array[i];
-                }
-                Polynomial res = new Polynomial(tmp);
-                return res;
-            }
-            else if (O == Operation.Multiplication)
-            {
-                double[] tmp = new double[A.pol_array.Length+B.pol_array.Length];
-                for (int i = 0; i < 101; i++)
-                {
-                    for (int j=0; j<101; j++)
-                    {
-                        tmp[i + j] += A.pol_array[i] * B.pol_array[j];
-                    }
-                }
-                Polynomial res = new Polynomial(tmp);
-                return res;
-            }
-            else if (O == Operation.Division)
-            {
                 int powA = 0;
                 int powB = 0;
                 for (int i=0; i<101; i++)
@@ -305,6 +240,48 @@ namespace Parser_of_Mathematical_Expressions
                     Console.WriteLine("The division on multiple polynomials is not supported");
                 }
 
+                return tmp;
+        }
+        
+        //Method for polynomials
+        public static Polynomial EvaluateOperation(Polynomial A, Polynomial B, Operation O)
+        {
+            if (O == Operation.Addition)
+            {
+                double[] tmp = new double[A.pol_array.Length];
+                for (int i = 0; i < 101; i++)
+                {
+                    tmp[i] = A.pol_array[i] + B.pol_array[i];
+                }
+                Polynomial res = new Polynomial(tmp);
+                return res;
+            }
+            else if (O==Operation.Substraction)
+            {
+                double[] tmp = new double[A.pol_array.Length];
+                for (int i = 0; i < 101; i++)
+                {
+                    tmp[i] = A.pol_array[i] - B.pol_array[i];
+                }
+                Polynomial res = new Polynomial(tmp);
+                return res;
+            }
+            else if (O == Operation.Multiplication)
+            {
+                double[] tmp = new double[A.pol_array.Length+B.pol_array.Length];
+                for (int i = 0; i < 101; i++)
+                {
+                    for (int j=0; j<101; j++)
+                    {
+                        tmp[i + j] += A.pol_array[i] * B.pol_array[j];
+                    }
+                }
+                Polynomial res = new Polynomial(tmp);
+                return res;
+            }
+            else if (O == Operation.Division)
+            {
+                double[] tmp = DividePolynomials(A, B);
                 Polynomial res = new Polynomial(tmp);
                 return res;
             }

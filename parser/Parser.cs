@@ -16,6 +16,115 @@ namespace Parser_of_Mathematical_Expressions
             splitter = S;
         }
 
+        bool OpenParenthesis()
+        {
+            if (splitter.current_sign == Sign.Open) return true;
+            else
+            {
+                Console.WriteLine("Missing opening parenthesis");
+                Environment.Exit(0);
+                return false;
+            }
+        }
+        
+        bool CloseParenthesis()
+        {
+            if (splitter.current_sign != Sign.Close) //if there's no )
+            {
+                Console.WriteLine("Missing closing parenthesis");
+                Environment.Exit(0);
+                return false;
+            }
+            else return true;
+        }
+        
+        Node PartSin()
+        {
+            splitter.Move_sign(); //move to the next sign
+            if (OpenParenthesis())
+            {
+                splitter.Move_sign();
+                
+                //Parse sequentially all the expression after the (
+                Node inside = PlusMinus();
+                
+                // Find the )
+                if (CloseParenthesis())
+                {
+                    double res = Math.Sin(inside.Calculate());
+                    Node part = new NodeNumber(res); //create the node with value of sin
+                    splitter.Move_sign();//move to the next sign
+                    return part;
+                }
+            }
+            return null;
+        }
+
+        Node PartCos()
+        {
+            splitter.Move_sign(); //move to the next sign
+            if (OpenParenthesis())
+            {
+                splitter.Move_sign();
+                
+                //Parse sequentially all the expression after the (
+                Node inside = PlusMinus();
+
+                // Find the )
+                if (CloseParenthesis())
+                {
+                    double res = Math.Cos(inside.Calculate());
+                    Node part = new NodeNumber(res); //create the node with value of sin
+                    splitter.Move_sign();//move to the next sign
+                    return part;
+                }
+            }
+            return null;
+        }
+
+        Node PartTg()
+        {
+            splitter.Move_sign(); //move to the next sign
+            if (OpenParenthesis())
+            {
+                splitter.Move_sign();
+                
+                //Parse sequentially all the expression after the (
+                Node inside = PlusMinus();
+
+                // Find the )
+                if (CloseParenthesis())
+                {
+                    double res = Math.Tan(inside.Calculate());
+                    Node part = new NodeNumber(res); //create the node with value of sin
+                    splitter.Move_sign();//move to the next sign
+                    return part;
+                }
+            }
+            return null;
+        }
+
+        Node PartCtg()
+        {
+            splitter.Move_sign(); //move to the next sign
+            if (OpenParenthesis())
+            {
+                splitter.Move_sign();
+                //Parse sequentially all the expression after the (
+                Node inside = PlusMinus();
+
+                // Find the )
+                if (CloseParenthesis())
+                {
+                    double res = 1 / Math.Tan(inside.Calculate());
+                    Node part = new NodeNumber(res); //create the node with value of sin
+                    splitter.Move_sign();//move to the next sign
+                    return part;
+                }
+            }
+            return null;
+        }
+        
         //Find and create the leaf with number
         //(is called every time the number is found)
         Node Part()
@@ -31,125 +140,29 @@ namespace Parser_of_Mathematical_Expressions
             //Sin
             if (splitter.current_sign == Sign.Sin)
             {
-                splitter.Move_sign(); //move to the next sign
-                if (splitter.current_sign == Sign.Open)
-                {
-                    splitter.Move_sign();
-                    //Parse sequentially all the expression after the (
-                    Node inside = PlusMinus();
-
-                    // Find the )
-                    if (splitter.current_sign != Sign.Close) //if there's no )
-                    {
-                        Console.WriteLine("Missing closing parenthesis");
-                        Environment.Exit(0);
-                    }
-                    else if (splitter.current_sign == Sign.Close)
-                    {
-                        double res = Math.Sin(inside.Calculate());
-                        Node part = new NodeNumber(res); //create the node with value of sin
-                        splitter.Move_sign();//move to the next sign
-                        return part;
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Missing opening parenthesis");
-                    Environment.Exit(0);
-                }
+                Node part = PartSin();
+                return part;
             }
 
             //Cos
             if (splitter.current_sign == Sign.Cos)
             {
-                splitter.Move_sign(); //move to the next sign
-                if (splitter.current_sign == Sign.Open)
-                {
-                    splitter.Move_sign();
-                    //Parse sequentially all the expression after the (
-                    Node inside = PlusMinus();
-
-                    // Find the )
-                    if (splitter.current_sign != Sign.Close) //if there's no )
-                    {
-                        Console.WriteLine("Missing closing parenthesis");
-                        Environment.Exit(0);
-                    }
-                    else if (splitter.current_sign == Sign.Close)
-                    {
-                        double res = Math.Cos(inside.Calculate());
-                        Node part = new NodeNumber(res); //create the node with value of sin
-                        splitter.Move_sign();//move to the next sign
-                        return part;
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Missing opening parenthesis");
-                    Environment.Exit(0);
-                }
+                Node part = PartCos();
+                return part;
             }
 
             //Tg
-            if (splitter.current_sign == Sign.Sin)
+            if (splitter.current_sign == Sign.Tg)
             {
-                splitter.Move_sign(); //move to the next sign
-                if (splitter.current_sign == Sign.Open)
-                {
-                    splitter.Move_sign();
-                    //Parse sequentially all the expression after the (
-                    Node inside = PlusMinus();
-
-                    // Find the )
-                    if (splitter.current_sign != Sign.Close) //if there's no )
-                    {
-                        Console.WriteLine("Missing closing parenthesis");
-                        Environment.Exit(0);
-                    }
-                    else if (splitter.current_sign == Sign.Close)
-                    {
-                        double res = Math.Tan(inside.Calculate());
-                        Node part = new NodeNumber(res); //create the node with value of sin
-                        splitter.Move_sign();//move to the next sign
-                        return part;
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Missing opening parenthesis");
-                    Environment.Exit(0);
-                }
+                Node part = PartTg();
+                return part;
             }
 
             //Ctg
-            if (splitter.current_sign == Sign.Sin)
+            if (splitter.current_sign == Sign.Ctg)
             {
-                splitter.Move_sign(); //move to the next sign
-                if (splitter.current_sign == Sign.Open)
-                {
-                    splitter.Move_sign();
-                    //Parse sequentially all the expression after the (
-                    Node inside = PlusMinus();
-
-                    // Find the )
-                    if (splitter.current_sign != Sign.Close) //if there's no )
-                    {
-                        Console.WriteLine("Missing closing parenthesis");
-                        Environment.Exit(0);
-                    }
-                    else if (splitter.current_sign == Sign.Close)
-                    {
-                        double res = 1 / Math.Tan(inside.Calculate());
-                        Node part = new NodeNumber(res); //create the node with value of sin
-                        splitter.Move_sign();//move to the next sign
-                        return part;
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Missing opening parenthesis");
-                    Environment.Exit(0);
-                }
+                Node part = PartCtg();
+                return part;
             }
 
             //Parenthesis
@@ -589,13 +602,9 @@ namespace Parser_of_Mathematical_Expressions
             return true;
         }
 
-        Node_M Part()
+        Node_M PartMatrOpen()
         {
-            /*[ 2 0 ; -1 3 ] * [ 2 0 ; -1 3 ]*/
-            //Matr
-            if (splitter.current_sign == Sign.MatrOpen)
-            {
-                splitter.Move_sign();
+            splitter.Move_sign();
                 List<List<int>> matr = new List<List<int>>();
                 int c = 0;
                 while (splitter.current_sign != Sign.MatrClose)
@@ -651,8 +660,7 @@ namespace Parser_of_Mathematical_Expressions
                     c++;
                 }
 
-
-
+                
                 //Check whether each row has an even number of elements
                 int columns = matr.Count;
                 List<int> curr_row = matr[0];
@@ -686,12 +694,11 @@ namespace Parser_of_Mathematical_Expressions
                     splitter.Move_sign();//skip space
                 }
                 return part;
-            }
+        }
 
-            //inv
-            if (splitter.current_sign == Sign.Inv)
-            {
-                //inv([ 2 5 7 ; 6 3 4 ; 5 -2 -3])
+        Node_M PartInv()
+        {
+            //inv([ 2 5 7 ; 6 3 4 ; 5 -2 -3])
                 splitter.Move_sign(); //move to the next sign
                 if (splitter.current_sign == Sign.Space)
                 {
@@ -770,6 +777,25 @@ namespace Parser_of_Mathematical_Expressions
                     Console.WriteLine("Missing opening parenthesis");
                     Environment.Exit(0);
                 }
+
+                return null;
+        }
+
+        Node_M Part()
+        {
+            /*[ 2 0 ; -1 3 ] * [ 2 0 ; -1 3 ]*/
+            //Matr
+            if (splitter.current_sign == Sign.MatrOpen)
+            {
+                Node_M part = PartMatrOpen();
+                return part;
+            }
+
+            //inv
+            if (splitter.current_sign == Sign.Inv)
+            {
+                Node_M part = PartInv();
+                return part;
             }
 
             //Parenthesis
